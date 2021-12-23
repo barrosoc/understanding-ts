@@ -29,3 +29,19 @@ console.log(combineStringAges);
 
 const combineNames = combine("Carlos", "Ana", 'as-text');
 console.log(combineNames);
+
+
+type User = { name: string; age: number };
+const carlos = { name: 'Carlos', age: 33 };
+const threadholdAge = 30;
+ 
+function greet(user: User) {
+  console.log('Hi, I am ' + user.name);
+}
+ 
+function isOlder(user: User, checkAge: number) {
+  return checkAge > user.age;
+}
+
+greet(carlos);
+console.log(`${carlos.name} is ${isOlder(carlos, threadholdAge) ? 'not ' : ''}older than ${threadholdAge}` )
