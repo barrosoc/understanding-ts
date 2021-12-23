@@ -1,4 +1,4 @@
-function sum(n1: number, n2: number, showResult: boolean, phrase: string) {
+function add2(n1: number, n2: number, showResult: boolean, phrase: string) {
     const result = n1 + n2;
     if(showResult === true) {
         console.log(phrase + result);
@@ -12,4 +12,4 @@ const number2 = 2.8;
 const showResult = true;
 const resultPhrase = 'Result is: ';
 
-sum(number1, number2, showResult, resultPhrase);
+add2(number1, number2, showResult, resultPhrase); 
