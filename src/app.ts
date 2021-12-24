@@ -1,15 +1,24 @@
-interface Person {
+interface Greetable {
   name: string;
-  age: number;
 
   greet(phrase: string): void;
 }
 
-let user1: Person;
+class Person implements Greetable {
+  age = 30;
+
+  constructor(public name: string) {}
+
+  greet(phrase: string): void {
+    throw new Error("Method not implemented.");
+  }
+
+}
+
+let user1: Greetable;
 
 user1 = {
   name: 'Carlos',
-  age: 30,
 
   greet(phrase: string) {
    console.log(phrase + ' ' + this.name); 
@@ -17,3 +26,4 @@ user1 = {
 };
 
 user1.greet('Hi there! I am');
+console.log(user1);
