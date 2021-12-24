@@ -1,13 +1,27 @@
-interface Greetable {
-  readonly name: string;
+interface AddFn {
+  (a: number, b: number): number;
+} 
 
+let add: AddFn;
+add = (n1: number, n2: number) => {
+  return n1 + n2;
+}
+
+interface Named {
+  readonly name: string;
+}
+
+interface Greetable extends Named {
   greet(phrase: string): void;
 }
 
 class Person implements Greetable {
+  name: string;
   age = 30;
 
-  constructor(public name: string) {}
+  constructor(name: string) {
+    this.name = name;
+  }
 
   greet(phrase: string): void {
     throw new Error("Method not implemented.");
