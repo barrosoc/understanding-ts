@@ -1,14 +1,15 @@
 interface AddFn {
   (a: number, b: number): number;
-} 
+}
 
 let add: AddFn;
 add = (n1: number, n2: number) => {
   return n1 + n2;
-}
+};
 
 interface Named {
-  readonly name: string;
+  readonly name?: string;
+  outputName?: string;
 }
 
 interface Greetable extends Named {
@@ -16,28 +17,27 @@ interface Greetable extends Named {
 }
 
 class Person implements Greetable {
-  name: string;
+  name?: string;
   age = 30;
 
-  constructor(name: string) {
-    this.name = name;
+  constructor(name?: string) {
+    if (name) {
+      this.name = name;
+    }
   }
 
   greet(phrase: string): void {
-    throw new Error("Method not implemented.");
+    if (this.name) {
+      console.log(phrase + " " + this.name);
+    } else {
+      console.log('Hi!');
+    }
   }
-
 }
 
 let user1: Greetable;
 
-user1 = {
-  name: 'Carlos',
+user1 = new Person();
 
-  greet(phrase: string) {
-   console.log(phrase + ' ' + this.name); 
-  }
-};
-
-user1.greet('Hi there! I am');
+user1.greet("Hi there! I am");
 console.log(user1);
