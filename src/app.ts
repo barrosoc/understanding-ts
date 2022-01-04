@@ -44,6 +44,11 @@ const e1: ElevatedEmployee = {
 
  console.log(fetchedUserData?.job?.title);
 
+ const userInputField = '';
+ const storedData = userInputField ?? 'DEFAULT';
+
+ console.log(storedData);
+
 //  type UnkownEmployee = Employee | Admin;
 
 //  function printEmployeeInformation(emp: UnkownEmployee) {
