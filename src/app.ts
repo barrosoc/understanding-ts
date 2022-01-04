@@ -22,12 +22,19 @@ const e1: ElevatedEmployee = {
 
  type Universal = Combine & Numeric;
 
+ function sumAdd(a: number, b: number): number;
+ function sumAdd(a: string, b: string): string;
+ function sumAdd(a: string, b: number): string;
+ function sumAdd(a: number, b: string): string;
  function sumAdd(a: Combine, b: Combine) {
    if(typeof a === 'string' || typeof b === 'string') {
      return a.toString() + b.toString();
    }
    return a + b;
  }
+
+ const result = sumAdd(1, 2);
+ const resultString = sumAdd('Carlos', ' Barroso');
 
  type UnkownEmployee = Employee | Admin;
 
