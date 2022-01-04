@@ -34,3 +34,9 @@ function countAndPrint<T extends Lengthy>(element: T): [T, string] {
 }
 
 console.log(countAndPrint(['sports', 'cooking']));
+
+function extractAndCovert<T extends object, U extends keyof T>(obj: T, key: U) {
+  return `Value ${obj[key]}`;
+}
+
+extractAndCovert({name: 'Carlos'}, 'name');
