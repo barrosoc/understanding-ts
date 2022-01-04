@@ -9,3 +9,11 @@ const promise = new Promise<string>((resolve, reject) => {
 promise.then(data => {
   data.split(' ');
 })
+
+function merge<T, U>(objA: T, objB: U) {
+  return Object.assign(objA, objB);
+}
+
+const mergedObj = merge({name: 'Carlos', hobbies: ['Football']}, {age: 33});
+
+console.log(mergedObj.hobbies[0]);
