@@ -8,13 +8,21 @@ function Logger(logString: string) {
 
 function WithTemplate(template: string, hookId: string) {
   console.log("TEMPLATE factory");
-  return function (constructor: any) {
-    const hookEl = document.getElementById(hookId);
-    const p = new constructor();
-    if (hookEl) {
-      hookEl.innerHTML = template;
-      hookEl.querySelector("h1")!.textContent = p.name;
-    }
+  return function <T extends { new (...args: any[]): { name: string } }>(
+    originalConstructor: T
+  ) {
+    return class extends originalConstructor {
+      constructor(..._: any[]) {
+        super();
+
+        const hookEl = document.getElementById(hookId);
+        const p = new originalConstructor();
+        if (hookEl) {
+          hookEl.innerHTML = template;
+          hookEl.querySelector("h1")!.textContent = this.name;
+        }
+      }
+    };
   };
 }
 
@@ -30,7 +38,7 @@ class Persona {
 
 const pers = new Persona();
 
-console.log(pers);
+// console.log(pers);
 
 function Log(target: any, propertyName: string | Symbol) {
   console.log("Property decorator!");
@@ -90,5 +98,5 @@ class Product {
   }
 }
 
-const p1 = new Product('Book', 20);
-const p2 = new Product('Book2', 30);
+const p1 = new Product("Book", 20);
+const p2 = new Product("Book2", 30);
